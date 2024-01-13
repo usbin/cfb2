@@ -267,6 +267,7 @@ class Cfb(QWidget):
                 # nfc 발견하면 문 오픈
                 if (success):
                     self.evt.nfcDetected.emit()
+                    self.stackedWidget.setCurrentIndex(IDX_OPEN_DOOR)
                     QApplication.processEvents()
                     return
             else:
