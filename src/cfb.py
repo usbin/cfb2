@@ -307,12 +307,14 @@ class Cfb(QWidget):
         QApplication.processEvents()
 
     def close_door(self):
-        QApplication.processEvents()
         self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE_WARNING)
+        QApplication.processEvents()
         time.sleep(1)
         self.ui.label_5.setText("2")
+        QApplication.processEvents()
         time.sleep(1)
         self.ui.label_5.setText("1")
+        QApplication.processEvents()
         time.sleep(1)
         QApplication.processEvents()
         if __DEBUG__ or DOOR.close():
