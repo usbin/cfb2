@@ -182,12 +182,12 @@ class Cfb(QWidget):
     m_weight = None
     def __init__(self):
         super().__init__()
-        self.center()
         self.evt = Evt()
         self.stackedWidget = QtWidgets.QStackedWidget()
         self.ui = Ui_StackedWidget()
         self.ui.setupUi(self.stackedWidget)
         self.stackedWidget.show()
+        self.center()
         if not __DEBUG__:
             self.setupHardware()
             self.initEventHandler()
