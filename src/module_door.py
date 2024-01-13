@@ -18,10 +18,10 @@ class Door:
         self.m_delay = 0.00005
         self.m_cycles = 1
         self.m_current_pos = 0
-        print('Duration Total set to ' + str(self.m_duration_total))
+        print('[DOOR] Duration Total set to ' + str(self.m_duration_total))
 
-        print('Speed set to ' + str(self.m_delay))
-        print('number of Cycles to Run set to ' + str(self.m_cycles))
+        print('[DOOR] Speed set to ' + str(self.m_delay))
+        print('[DOOR] number of Cycles to Run set to ' + str(self.m_cycles))
 
     def open(self):
         if(self.m_current_pos == self.m_duration_total):
