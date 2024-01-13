@@ -38,7 +38,7 @@ COFFEEBOX_DOOR = CoffeeboxDoor()
 DOOR = Door()
 MEASURE_MODULE = MeasureModule()
 
-[IDX_IDLE, IDX_NFC_DETECT, IDX_DOOR_OPEN, IDX_BTN, IDX_DOOR_CLOSE, IDX_MEASURE_WEIGHT, IDX_RESULT] = [0,1,2,3,4,5,6]
+[IDX_IDLE, IDX_NFC_DETECT, IDX_BTN, IDX_DOOR_CLOSE, IDX_MEASURE_WEIGHT, IDX_RESULT] = [0,1,2,3,4,5]
 
 def 안쓰는코드():
 # def open_door():
@@ -241,7 +241,7 @@ class Cfb(QWidget):
         # 테스트환경에선 nfc detecting 스킵
         if __DEBUG__:
             self.evt.nfcDetected.emit()
-            self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
+            self.stackedWidget.setCurrentIndex(IDX_BTN)
             return
 
         totalMs = 0
@@ -267,7 +267,7 @@ class Cfb(QWidget):
                 # nfc 발견하면 문 오픈
                 if (success):
                     self.evt.nfcDetected.emit()
-                    self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
+                    self.stackedWidget.setCurrentIndex(IDX_BTN)
                     QApplication.processEvents()
                     return
             else:
@@ -304,7 +304,7 @@ class Cfb(QWidget):
 
         return True
     def ui_door_opened(self):
-        self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
+        self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE)
         QApplication.processEvents()
 
     def close_door(self):

@@ -13,8 +13,8 @@
   <property name="windowTitle">
    <string>StackedWidget</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">background-image: url(:/rc/bg.gif);</string>
+  <!-- <property name="styleSheet">
+   <string notr="true">background-image: url(:/rc/bg.gif);</string> -->
   </property>
   <widget class="QWidget" name="page1_idle">
    <widget class="QWidget" name="page1_layout" native="true">
@@ -22,8 +22,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>733</width>
-      <height>501</height>
+      <width>1000</width>
+      <height>625</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -78,8 +78,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>733</width>
-      <height>501</height>
+      <width>1000</width>
+      <height>625</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -131,8 +131,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>921</width>
-      <height>501</height>
+      <width>1000</width>
+      <height>625</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -262,8 +262,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>733</width>
-      <height>501</height>
+      <width>1000</width>
+      <height>625</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -344,8 +344,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>733</width>
-      <height>501</height>
+      <width>1000</width>
+      <height>625</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -429,8 +429,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>733</width>
-      <height>501</height>
+      <width>1000</width>
+      <height>625</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_6">
