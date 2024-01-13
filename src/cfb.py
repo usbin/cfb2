@@ -190,13 +190,14 @@ class Cfb(QWidget):
         self.center()
         if not __DEBUG__:
             self.setupHardware()
-            self.initEventHandler()
 
+        self.ui.page1_layout.mousePressEvent = self.onTouch
         self.evt.nfcDetected.connect(self.open_door)
         self.evt.doorOpened.connect(self.ui_door_opened)
         self.ui.pushButton.clicked.connect(self.close_door)
         self.evt.doorClosed.connect(self.determine_weight)
         self.evt.weightMeasured.connect(self.save_coffee)
+        self.ui.page6_result.mousePressEvent = self.reset
 
 
     def setupHardware(self):
@@ -225,8 +226,6 @@ class Cfb(QWidget):
         #------------------------------------------------#
 
 
-    def initEventHandler(self):
-        self.ui.page1_layout.mousePressEvent = self.onTouch
     # STEP 1: 화면 터치 대기
     def onTouch(self, pos):
         self.stackedWidget.setCurrentIndex(IDX_PLEASE_TOUCH_NFC)
@@ -359,6 +358,7 @@ class Cfb(QWidget):
                 print("┌────────────────────────────────────┐")
                 print("│            BOX CLOSED!            │")
                 print("└────────────────────────────────────┘")
+                self.done(self.m_weight*20)
                 self.stackedWidget.setCurrentIndex(IDX_RESULT)
 
         return True
@@ -373,7 +373,6 @@ class Cfb(QWidget):
         print('''│         Your id: %-10s        │'''%self.m_user_id)
         print('''│         Your point: +%-5d         │'''%point)
         print('''└────────────────────────────────────┘''')
-        self.reset()
 
     def reset(self):
         self.close_door()
@@ -382,6 +381,7 @@ class Cfb(QWidget):
         QApplication.processEvents()
         GPIO.cleanup()
         print("!All reseted!")
+
     def center(self):
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
