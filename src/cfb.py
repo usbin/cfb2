@@ -248,7 +248,6 @@ class Cfb(QWidget):
         totalMs = 0
         while(totalMs < 10000):
             QApplication.processEvents()
-            time.sleep(1)
             success = nfc.inListPassiveTarget()
             # gui 프리징 방지
             QApplication.processEvents()
@@ -368,8 +367,8 @@ class Cfb(QWidget):
                 print("┌────────────────────────────────────┐")
                 print("│            BOX CLOSED!            │")
                 print("└────────────────────────────────────┘")
-                self.done( self.m_weight)
                 self.stackedWidget.setCurrentIndex(IDX_RESULT)
+                self.done( self.m_weight)
 
         return True
 
@@ -390,7 +389,6 @@ class Cfb(QWidget):
         QApplication.processEvents()
 
     def reset(self, pos=None):
-        DOOR.close()
         self.m_user_id = ""
         self.stackedWidget.setCurrentIndex(IDX_IDLE)
         QApplication.processEvents()
