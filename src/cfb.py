@@ -226,9 +226,9 @@ class Cfb(QWidget):
 
 
     def initEventHandler(self):
-        self.ui.page1_layout.mousePressEvent = self.onIdle
+        self.ui.page1_layout.mousePressEvent = self.onTouch
     # STEP 1: 화면 터치 대기
-    def onIdle(self, pos):
+    def onTouch(self, pos):
         self.stackedWidget.setCurrentIndex(IDX_NFC_DETECT)
         #self.onNfcDetecting()
         loop = asyncio.get_event_loop()
@@ -304,10 +304,10 @@ class Cfb(QWidget):
 
         return True
     def ui_door_opened(self):
-        self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE)
         QApplication.processEvents()
 
     def close_door(self):
+        self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE)
         if __DEBUG__ or DOOR.close():
             print("┌────────────────────────────────────┐")
             print("│            DOOR CLOSED!            │")
