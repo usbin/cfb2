@@ -293,6 +293,7 @@ class Cfb(QWidget):
 
     def open_door(self):
 
+        MEASURE_MODULE.zero()
         if __DEBUG__ or DOOR.open():
             print("┌────────────────────────────────────┐")
             print("│            DOOR OPENED!            │")

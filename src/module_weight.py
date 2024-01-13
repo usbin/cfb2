@@ -11,10 +11,12 @@ class MeasureModule:
             dout_pin=DOUT,
             pd_sck_pin=SCK
         )
-        self.hx711.set_offset(-200000)
         print('HX711 Initialization Completed')
+    def zero(self):
+        self.__init__()
+        self.hx711.zero()
+        self.hx711.set_offset(-200000)
 
     def measure(self):
-        self.__init__()
         w = self.hx711.get_weight_mean()
         return w/10000
