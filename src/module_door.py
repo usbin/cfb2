@@ -35,6 +35,7 @@ class Door:
         return self.move(-self.m_current_pos)
 
     def move(self, dist):
+        GPIO.setmode(GPIO.BCM)
         GPIO.output(ENA_DOOR, GPIO.HIGH)
         print('ENA_A set to HIGH - Controller Enabled')
         print('dist : %d'%dist)
