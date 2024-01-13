@@ -312,6 +312,7 @@ class Cfb(QWidget):
     # done 버튼 클릭됨 -> 3초 카운트다운
     def ui_on_done_clicked(self):
         self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE_WARNING)
+        self.ui.label_5.setText("3")
         QApplication.processEvents()
         time.sleep(1)
         self.ui.label_5.setText("2")
@@ -385,7 +386,7 @@ class Cfb(QWidget):
         print('''└────────────────────────────────────┘''')
         self.ui.tb_weight_measure.setText("Weight: %.1fg"%self.m_weight)
         self.ui.tb_point.setText("%d Points added."%self.m_added_point)
-        self.ui.tb_total_point.setText("Your total points : %sP"%format(math.ceil( self.m_added_point+10260), ','))
+        self.ui.tb_total_point.setText("Your total points : %sP"%format(math.floor( self.m_added_point+10260), ','))
         QApplication.processEvents()
 
     def reset(self, pos=None):
