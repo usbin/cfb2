@@ -342,12 +342,14 @@ class Cfb(QWidget):
             print("┌────────────────────────────────────┐")
             print("│             BOX OPENED!            │")
             print("└────────────────────────────────────┘")
-        time.sleep(2)
-        if __DEBUG__ or COFFEEBOX_DOOR.close():
-            print("┌────────────────────────────────────┐")
-            print("│            BOX CLOSED!            │")
-            print("└────────────────────────────────────┘")
-            self.stackedWidget.setCurrentIndex(IDX_RESULT)
+
+            time.sleep(2)
+            if __DEBUG__ or COFFEEBOX_DOOR.close():
+                print("┌────────────────────────────────────┐")
+                print("│            BOX CLOSED!            │")
+                print("└────────────────────────────────────┘")
+                self.stackedWidget.setCurrentIndex(IDX_RESULT)
+
         return True
 
 
