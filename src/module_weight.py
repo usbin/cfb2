@@ -15,7 +15,7 @@ class MeasureModule:
     def zero(self):
         self.__init__()
         self.hx711.zero()
-        self.hx711.set_offset(-30000)
+        self.hx711.set_offset(-290000)
         print('[HX711] zero!')
 
     def measure(self):

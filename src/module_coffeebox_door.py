@@ -15,7 +15,7 @@ class CoffeeboxDoor:
         GPIO.setup(PUL_COFFEE_DOOR, GPIO.OUT)
         GPIO.setup(DIR_COFFEE_DOOR, GPIO.OUT)
         GPIO.setup(ENA_COFFEE_DOOR, GPIO.OUT)
-        self.m_duration_total = 7000
+        self.m_duration_total = 7500
         self.m_delay = 0.00005
         self.m_cycles = 1
         self.m_current_pos = 0
