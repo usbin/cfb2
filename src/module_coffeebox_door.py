@@ -1,9 +1,9 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
-PUL_COFFEE_DOOR = 23  # Stepper Drive Pul_Ases
-DIR_COFFEE_DOOR = 24  # Controller Direction Bit (High for Controller default / LOW to Force a Direction Change).
-ENA_COFFEE_DOOR = 25  # Controller Enable Bit (High to Enable / LOW to Disable).
+PUL_COFFEE_DOOR = 10  # Stepper Drive Pul_Ases
+DIR_COFFEE_DOOR = 9  # Controller Direction Bit (High for Controller default / LOW to Force a Direction Change).
+ENA_COFFEE_DOOR = 11  # Controller Enable Bit (High to Enable / LOW to Disable).
 
 class CoffeeboxDoor:
 
