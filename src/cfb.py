@@ -329,7 +329,7 @@ class Cfb(QWidget):
             print("└────────────────────────────────────┘")
         if __DEBUG__ or COFFEEBOX_DOOR.close():
             print("┌────────────────────────────────────┐")
-            print("│            DOOR CLOSED!            │")
+            print("│            BOX CLOSED!            │")
             print("└────────────────────────────────────┘")
             self.stackedWidget.setCurrentIndex(IDX_RESULT)
         return True
