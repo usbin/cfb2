@@ -19,7 +19,7 @@ class Ui_StackedWidget(object):
         self.page1_idle = QtWidgets.QWidget()
         self.page1_idle.setObjectName("page1_idle")
         self.page1_layout = QtWidgets.QWidget(self.page1_idle)
-        self.page1_layout.setGeometry(QtCore.QRect(0, 0, 733, 501))
+        self.page1_layout.setGeometry(QtCore.QRect(0, 0, 1000, 625))
         self.page1_layout.setObjectName("page1_layout")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.page1_layout)
         self.verticalLayout.setContentsMargins(0, 0, 0, 20)
