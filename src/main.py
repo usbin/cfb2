@@ -15,7 +15,7 @@ class Ui_StackedWidget(object):
     def setupUi(self, StackedWidget):
         StackedWidget.setObjectName("StackedWidget")
         StackedWidget.resize(900, 625)
-        StackedWidget.setStyleSheet("background-image: url(:/rc/bg.gif);")
+        # StackedWidget.setStyleSheet("background-image: url(:/rc/bg.gif);")
         self.page1_idle = QtWidgets.QWidget()
         self.page1_idle.setObjectName("page1_idle")
         self.page1_layout = QtWidgets.QWidget(self.page1_idle)
