@@ -17,7 +17,7 @@ from main import Ui_StackedWidget
 import asyncio
 
 
-__DEBUG__ = True
+__DEBUG__ = False
 
 
 
