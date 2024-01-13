@@ -11,6 +11,7 @@ class MeasureModule:
             pd_sck_pin=SCK
         )
         self.hx711.set_offset(-200000)
+        print('HX711 Initialization Completed')
 
     def measure(self):
         w = self.hx711.get_weight_mean()

@@ -202,6 +202,7 @@ class Cfb(QWidget):
         time.sleep(0.5)
 
         versiondata = nfc.getFirmwareVersion()
+        time.sleep(0.5)
         if not versiondata:
             print("Didn't find PN53x board")
             raise RuntimeError("Didn't find PN53x board")  # halt

@@ -14,7 +14,6 @@ class Door:
         GPIO.setup(PUL_DOOR, GPIO.OUT)
         GPIO.setup(DIR_DOOR, GPIO.OUT)
         GPIO.setup(ENA_DOOR, GPIO.OUT)
-        print('HX711 Initialization Completed')
         self.m_duration_total = 6000
         self.m_delay = 0.00005
         self.m_cycles = 1
