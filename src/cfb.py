@@ -191,6 +191,7 @@ class Cfb(QWidget):
             self.initEventHandler()
 
         self.evt.nfcDetected.connect(self.open_door)
+        self.evt.doorOpened.connect(self.ui_door_opened)
         self.ui.pushButton.clicked.connect(self.close_door)
         self.evt.doorClosed.connect(self.determine_weight)
         self.evt.weightMeasured.connect(self.save_coffee)
@@ -299,18 +300,26 @@ class Cfb(QWidget):
             print("┌────────────────────────────────────┐")
             print("│            DOOR OPENED!            │")
             print("└────────────────────────────────────┘")
+            QApplication.processEvents()
             self.evt.doorOpened.emit()
             self.stackedWidget.setCurrentIndex(IDX_BTN)
+            QApplication.processEvents()
 
 
         return True
+    def ui_door_opened(self):
+        self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
+        QApplication.processEvents()
+
     def close_door(self):
         if __DEBUG__ or DOOR.close():
             print("┌────────────────────────────────────┐")
             print("│            DOOR CLOSED!            │")
             print("└────────────────────────────────────┘")
+            QApplication.processEvents()
             self.evt.doorClosed.emit()
             self.stackedWidget.setCurrentIndex(IDX_MEASURE_WEIGHT)
+            QApplication.processEvents()
         return True
     def determine_weight(self):
 
