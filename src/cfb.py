@@ -200,10 +200,10 @@ class Cfb(QWidget):
         #               NFC 초기화                        #
         #------------------------------------------------#
         nfc.begin()
-        time.sleep(0.5)
+        time.sleep(1)
 
         versiondata = nfc.getFirmwareVersion()
-        time.sleep(0.5)
+        time.sleep(1)
         if not versiondata:
             print("Didn't find PN53x board")
             raise RuntimeError("Didn't find PN53x board")  # halt
@@ -246,6 +246,8 @@ class Cfb(QWidget):
 
         totalMs = 0
         while(totalMs < 10000):
+            QApplication.processEvents()
+            time.sleep(1)
             success = nfc.inListPassiveTarget()
             # gui 프리징 방지
             QApplication.processEvents()
