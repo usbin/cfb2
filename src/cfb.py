@@ -314,7 +314,6 @@ class Cfb(QWidget):
             print("└────────────────────────────────────┘")
             QApplication.processEvents()
             self.evt.doorClosed.emit()
-            self.stackedWidget.setCurrentIndex(IDX_MEASURE_WEIGHT)
             QApplication.processEvents()
         return True
     def determine_weight(self):
@@ -324,6 +323,9 @@ class Cfb(QWidget):
         print("└────────────────────────────────────┘")
 
 
+        QApplication.processEvents()
+        self.stackedWidget.setCurrentIndex(IDX_MEASURE_WEIGHT)
+        QApplication.processEvents()
         if __DEBUG__ :
             self.m_weight = 99
         else :
