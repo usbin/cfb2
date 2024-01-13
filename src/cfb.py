@@ -307,7 +307,10 @@ class Cfb(QWidget):
     def ui_door_opened(self):
         QApplication.processEvents()
 
-    def close_door(self):
+
+
+    # done 버튼 클릭됨 -> 3초 카운트다운
+    def ui_on_done_clicked(self):
         self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE_WARNING)
         QApplication.processEvents()
         time.sleep(1)
@@ -319,6 +322,9 @@ class Cfb(QWidget):
         time.sleep(1)
         self.ui.label_5.setText("0")
         QApplication.processEvents()
+
+    # 문짝 닫기
+    def close_door(self):
         if __DEBUG__ or DOOR.close():
             print("┌────────────────────────────────────┐")
             print("│            DOOR CLOSED!            │")
@@ -326,7 +332,7 @@ class Cfb(QWidget):
             QApplication.processEvents()
             self.evt.doorClosed.emit()
             QApplication.processEvents()
-        return True
+            return True
     def determine_weight(self):
 
         print("┌────────────────────────────────────┐")
@@ -376,12 +382,13 @@ class Cfb(QWidget):
         print('''│         Your id: %-10s        │'''%self.m_user_id)
         print('''│         Your point: +%-5d         │'''%self.m_added_point)
         print('''└────────────────────────────────────┘''')
-        self.ui.tb_weight_measure.setText("Weight: %fg"%self.m_weight)
+        self.ui.tb_weight_measure.setText("Weight: %.1fg"%self.m_weight)
         self.ui.tb_point.setText("%d Points added."%self.m_added_point)
         self.ui.tb_total_point.setText("Your total points : %sP"%format(self.m_added_point+10260, ','))
+        QApplication.processEvents()
 
     def reset(self, pos=None):
-        self.close_door()
+        DOOR.close()
         self.m_user_id = ""
         self.stackedWidget.setCurrentIndex(IDX_IDLE)
         QApplication.processEvents()
