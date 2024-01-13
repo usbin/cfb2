@@ -268,7 +268,7 @@ class Cfb(QWidget):
                 if (success):
                     self.evt.nfcDetected.emit()
                     self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
-                    break
+                    return
             else:
                 print("Waiting...")
 
