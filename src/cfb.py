@@ -182,7 +182,7 @@ class Cfb(QWidget):
     m_weight = None
     def __init__(self):
         super().__init__()
-
+        self.center()
         self.evt = Evt()
         self.stackedWidget = QtWidgets.QStackedWidget()
         self.ui = Ui_StackedWidget()
@@ -316,6 +316,7 @@ class Cfb(QWidget):
         self.ui.label_5.setText("1")
         QApplication.processEvents()
         time.sleep(1)
+        self.ui.label_5.setText("0")
         QApplication.processEvents()
         if __DEBUG__ or DOOR.close():
             print("┌────────────────────────────────────┐")
