@@ -379,7 +379,7 @@ class Cfb(QWidget):
         self.reset()
 
     def done(self, weight):
-        self.m_added_point = weight*20
+        self.m_added_point = weight*0.2
         print('''┌────────────────────────────────────┐''')
         print('''│         Your id: %-10s        │'''%self.m_user_id)
         print('''│         Your point: +%-5d         │'''%self.m_added_point)
