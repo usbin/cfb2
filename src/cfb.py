@@ -180,6 +180,7 @@ class Cfb(QWidget):
     evt = None
     m_user_id = None
     m_weight = None
+    m_added_point = None
     def __init__(self):
         super().__init__()
         self.evt = Evt()
@@ -340,11 +341,12 @@ class Cfb(QWidget):
             self.m_weight = 99
         else :
             self.m_weight = MEASURE_MODULE.measure()
+            print('''┌────────────────────────────────────┐''')
+            print('''│          Weight : %4dg            │'''%self.m_weight)
+            print('''└────────────────────────────────────┘''')
+
             self.evt.weightMeasured.emit()
 
-        print('''┌────────────────────────────────────┐''')
-        print('''│          Weight : %4dg            │'''%self.m_weight)
-        print('''└────────────────────────────────────┘''')
 
         return True, self.m_weight
     def save_coffee(self):
@@ -358,7 +360,7 @@ class Cfb(QWidget):
                 print("┌────────────────────────────────────┐")
                 print("│            BOX CLOSED!            │")
                 print("└────────────────────────────────────┘")
-                self.done(self.m_weight*20)
+                self.done( self.m_weight)
                 self.stackedWidget.setCurrentIndex(IDX_RESULT)
 
         return True
@@ -368,13 +370,17 @@ class Cfb(QWidget):
         print("!Something wrong...!")
         self.reset()
 
-    def done(self, point):
+    def done(self, weight):
+        self.m_added_point = weight*20
         print('''┌────────────────────────────────────┐''')
         print('''│         Your id: %-10s        │'''%self.m_user_id)
-        print('''│         Your point: +%-5d         │'''%point)
+        print('''│         Your point: +%-5d         │'''%self.m_added_point)
         print('''└────────────────────────────────────┘''')
+        self.ui.tb_weight_measure.setText("Weight: %fg"%self.m_weight)
+        self.ui.tb_point.setText("%d Points added."%self.m_added_point)
+        self.ui.tb_total_point.setText("Your total points : %sP"%format(self.m_added_point+10260, ','))
 
-    def reset(self):
+    def reset(self, pos=None):
         self.close_door()
         self.m_user_id = ""
         self.stackedWidget.setCurrentIndex(IDX_IDLE)
