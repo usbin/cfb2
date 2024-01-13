@@ -299,8 +299,6 @@ class Cfb(QWidget):
             print("└────────────────────────────────────┘")
             QApplication.processEvents()
             self.evt.doorOpened.emit()
-            time.sleep(2)
-            self.stackedWidget.setCurrentIndex(IDX_BTN)
             QApplication.processEvents()
 
 
