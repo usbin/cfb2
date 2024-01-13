@@ -38,7 +38,7 @@ COFFEEBOX_DOOR = CoffeeboxDoor()
 DOOR = Door()
 MEASURE_MODULE = MeasureModule()
 
-[IDX_IDLE, IDX_NFC_DETECT, IDX_BTN, IDX_DOOR_CLOSE, IDX_MEASURE_WEIGHT, IDX_RESULT] = [0,1,2,3,4,5]
+[IDX_IDLE, IDX_PLEASE_TOUCH_NFC, IDX_OPEN_DOOR, IDX_DOOR_CLOSE_WARNING, IDX_MEASURE_WEIGHT, IDX_RESULT] = [0,1,2,3,4,5]
 
 def 안쓰는코드():
 # def open_door():
@@ -229,7 +229,7 @@ class Cfb(QWidget):
         self.ui.page1_layout.mousePressEvent = self.onTouch
     # STEP 1: 화면 터치 대기
     def onTouch(self, pos):
-        self.stackedWidget.setCurrentIndex(IDX_NFC_DETECT)
+        self.stackedWidget.setCurrentIndex(IDX_PLEASE_TOUCH_NFC)
         #self.onNfcDetecting()
         loop = asyncio.get_event_loop()
         loop.run_until_complete(self.onNfcDetecting())
@@ -241,7 +241,7 @@ class Cfb(QWidget):
         # 테스트환경에선 nfc detecting 스킵
         if __DEBUG__:
             self.evt.nfcDetected.emit()
-            self.stackedWidget.setCurrentIndex(IDX_BTN)
+            self.stackedWidget.setCurrentIndex(IDX_OPEN_DOOR)
             return
 
         totalMs = 0
@@ -267,7 +267,6 @@ class Cfb(QWidget):
                 # nfc 발견하면 문 오픈
                 if (success):
                     self.evt.nfcDetected.emit()
-                    self.stackedWidget.setCurrentIndex(IDX_BTN)
                     QApplication.processEvents()
                     return
             else:
@@ -308,7 +307,12 @@ class Cfb(QWidget):
 
     def close_door(self):
         QApplication.processEvents()
-        self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE)
+        self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE_WARNING)
+        time.sleep(1)
+        self.stackedWidget.label_5.setText("2")
+        time.sleep(1)
+        self.stackedWidget.label_5.setText("1")
+        time.sleep(1)
         QApplication.processEvents()
         if __DEBUG__ or DOOR.close():
             print("┌────────────────────────────────────┐")
