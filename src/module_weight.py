@@ -15,8 +15,9 @@ class MeasureModule:
     def zero(self):
         self.__init__()
         self.hx711.zero()
-        self.hx711.set_offset(-200000)
+        self.hx711.set_offset(-90000)
+        print('[HX711] zero!')
 
     def measure(self):
         w = self.hx711.get_weight_mean()
-        return w/10000
+        return -w/11000
