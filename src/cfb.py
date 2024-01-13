@@ -184,11 +184,11 @@ class Cfb(QWidget):
         self.evt = Evt()
         self.stackedWidget = QtWidgets.QStackedWidget()
         self.ui = Ui_StackedWidget()
+        self.ui.setupUi(self.stackedWidget)
+        self.stackedWidget.show()
         if not __DEBUG__:
             self.setupHardware()
             self.initEventHandler()
-        self.ui.setupUi(self.stackedWidget)
-        self.stackedWidget.show()
 
         self.evt.nfcDetected.connect(self.open_door)
         self.ui.pushButton.clicked.connect(self.close_door)
