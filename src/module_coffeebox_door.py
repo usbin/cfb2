@@ -35,7 +35,7 @@ class CoffeeboxDoor:
         return self.move(-self.m_current_pos)
 
     def move(self, dist):
-        GPIO.setmode(GPIO.BCM)
+        self.__init__()
         GPIO.output(ENA_DOOR, GPIO.HIGH)
         print('ENA_A set to HIGH - Controller Enabled')
         print('dist : %d'%dist)
