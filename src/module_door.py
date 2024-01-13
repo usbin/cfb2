@@ -8,6 +8,7 @@ ENA_DOOR = 22  # Controller Enable Bit (High to Enable / LOW to Disable).
 class Door:
 
     def __init__(self, m_duration_total=0, m_delay=0, m_cycles=0, m_current_pos=0):
+        GPIO.setmode(GPIO.BCM)
         # GPIO.setmode(GPIO.BOARD) # Do NOT use GPIO.BOARD mode. Here for comparison only.
         #
         GPIO.setup(PUL_DOOR, GPIO.OUT)
