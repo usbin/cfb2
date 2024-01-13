@@ -247,6 +247,8 @@ class Cfb(QWidget):
         totalMs = 0
         while(totalMs < 10000):
             success = nfc.inListPassiveTarget()
+            # gui 프리징 방지
+            QApplication.processEvents()
             time.sleep(1)
             if (success):
                 print("Found something!")
@@ -267,8 +269,6 @@ class Cfb(QWidget):
             else:
                 print("Waiting...")
 
-            # gui 프리징 방지
-            QApplication.processEvents()
 
             await asyncio.sleep(1)
             totalMs += 1000

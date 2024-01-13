@@ -14,5 +14,6 @@ class MeasureModule:
         print('HX711 Initialization Completed')
 
     def measure(self):
+        self.__init__()
         w = self.hx711.get_weight_mean()
         return w/10000
