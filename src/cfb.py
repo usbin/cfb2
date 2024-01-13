@@ -299,6 +299,7 @@ class Cfb(QWidget):
             print("└────────────────────────────────────┘")
             QApplication.processEvents()
             self.evt.doorOpened.emit()
+            time.sleep(2)
             self.stackedWidget.setCurrentIndex(IDX_BTN)
             QApplication.processEvents()
 
@@ -341,6 +342,7 @@ class Cfb(QWidget):
             print("┌────────────────────────────────────┐")
             print("│             BOX OPENED!            │")
             print("└────────────────────────────────────┘")
+        time.sleep(2)
         if __DEBUG__ or COFFEEBOX_DOOR.close():
             print("┌────────────────────────────────────┐")
             print("│            BOX CLOSED!            │")
