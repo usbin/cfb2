@@ -14,8 +14,8 @@
    <string>StackedWidget</string>
   </property>
   <!-- <property name="styleSheet">
-   <string notr="true">background-image: url(:/rc/bg.gif);</string> -->
-  </property>
+   <string notr="true">background-image: url(:/rc/bg.gif);</string>
+  </property> -->
   <widget class="QWidget" name="page1_idle">
    <widget class="QWidget" name="page1_layout" native="true">
     <property name="geometry">
