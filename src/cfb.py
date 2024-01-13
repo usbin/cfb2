@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget
 from PyQt5.QtCore import pyqtSignal, QObject
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
@@ -383,7 +383,7 @@ class Cfb(QWidget):
         print("!All reseted!")
     def center(self):
         qr = self.frameGeometry()
-        cp = self.QDesktopWidget().availableGeometry().center()
+        cp = QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
 
