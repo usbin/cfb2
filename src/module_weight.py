@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 from hx711 import HX711
+from PyQt5.QtWidgets import QApplication, QWidget
 [DOUT, SCK]=[5,6]
 
 class MeasureModule:

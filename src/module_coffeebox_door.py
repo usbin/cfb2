@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep
+from PyQt5.QtWidgets import QApplication, QWidget
 
 PUL_COFFEE_DOOR = 10  # Stepper Drive Pul_Ases
 DIR_COFFEE_DOOR = 9  # Controller Direction Bit (High for Controller default / LOW to Force a Direction Change).

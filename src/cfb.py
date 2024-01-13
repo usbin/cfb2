@@ -193,6 +193,8 @@ class Cfb(QWidget):
         self.evt.nfcDetected.connect(self.open_door)
         self.ui.pushButton.clicked.connect(self.close_door)
         self.evt.doorClosed.connect(self.determine_weight)
+        self.evt.weightMeasured.connect(self.save_coffee)
+
 
     def setupHardware(self):
         print("-------Peer to Peer HCE--------")
@@ -268,6 +270,7 @@ class Cfb(QWidget):
                 if (success):
                     self.evt.nfcDetected.emit()
                     self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
+                    QApplication.processEvents()
                     return
             else:
                 print("Waiting...")
@@ -282,8 +285,11 @@ class Cfb(QWidget):
             #self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
 
     def onPutCoffeeWaiting(self):
+        QApplication.processEvents()
         self.close_door()
+        QApplication.processEvents()
         self.determine_weight()
+        QApplication.processEvents()
         self.save_coffee()
 
 
@@ -317,6 +323,7 @@ class Cfb(QWidget):
             self.m_weight = 99
         else :
             self.m_weight = MEASURE_MODULE.measure()
+            self.evt.weightMeasured.emit()
 
         print('''┌────────────────────────────────────┐''')
         print('''│          Weight : %4dg            │'''%self.m_weight)
