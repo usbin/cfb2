@@ -383,7 +383,7 @@ class Cfb(QWidget):
         print("!All reseted!")
     def center(self):
         qr = self.frameGeometry()
-        cp = self.stackedWidget.availableGeometry().center()
+        cp = self.QDesktopWidget().availableGeometry().center()
         qr.moveCenter(cp)
         self.move(qr.topLeft())
 
