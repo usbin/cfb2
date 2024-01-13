@@ -367,6 +367,7 @@ class Cfb(QWidget):
         self.m_user_id = ""
         self.stackedWidget.setCurrentIndex(IDX_IDLE)
         QApplication.processEvents()
+        GPIO.cleanup()
         print("!All reseted!")
 
 if __name__ == '__main__':
