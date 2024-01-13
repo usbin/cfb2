@@ -12,6 +12,7 @@ from module_coffeebox_door import CoffeeboxDoor
 from module_door import Door
 from module_weight import MeasureModule
 import RPi.GPIO as GPIO
+import math
 
 from main import Ui_StackedWidget
 import asyncio
@@ -385,7 +386,7 @@ class Cfb(QWidget):
         print('''└────────────────────────────────────┘''')
         self.ui.tb_weight_measure.setText("Weight: %.1fg"%self.m_weight)
         self.ui.tb_point.setText("%d Points added."%self.m_added_point)
-        self.ui.tb_total_point.setText("Your total points : %dP"%format(self.m_added_point+10260, ','))
+        self.ui.tb_total_point.setText("Your total points : %dP"%format(math.ceil( self.m_added_point+10260), ','))
         QApplication.processEvents()
 
     def reset(self, pos=None):
