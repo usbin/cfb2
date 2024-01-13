@@ -70,3 +70,5 @@ class Door:
         sleep(.5) # pause for possible change direction
         return True
 
+
+

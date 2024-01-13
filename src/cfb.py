@@ -380,6 +380,11 @@ class Cfb(QWidget):
         QApplication.processEvents()
         GPIO.cleanup()
         print("!All reseted!")
+    def center(self):
+        qr = self.frameGeometry()
+        cp = self.stackedWidget.availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
