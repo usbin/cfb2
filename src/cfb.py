@@ -195,7 +195,7 @@ class Cfb(QWidget):
         self.ui.page1_layout.mousePressEvent = self.onTouch
         self.evt.nfcDetected.connect(self.open_door)
         self.evt.doorOpened.connect(self.ui_door_opened)
-        self.ui.pushButton.clicked.connect(self.close_door)
+        self.ui.pushButton.clicked.connect(self.ui_on_done_clicked)
         self.evt.doorClosed.connect(self.determine_weight)
         self.evt.weightMeasured.connect(self.save_coffee)
         self.ui.page6_result.mousePressEvent = self.reset
@@ -322,6 +322,7 @@ class Cfb(QWidget):
         time.sleep(1)
         self.ui.label_5.setText("0")
         QApplication.processEvents()
+        self.close_door()
 
     # 문짝 닫기
     def close_door(self):
@@ -384,7 +385,7 @@ class Cfb(QWidget):
         print('''└────────────────────────────────────┘''')
         self.ui.tb_weight_measure.setText("Weight: %.1fg"%self.m_weight)
         self.ui.tb_point.setText("%d Points added."%self.m_added_point)
-        self.ui.tb_total_point.setText("Your total points : %sP"%format(self.m_added_point+10260, ','))
+        self.ui.tb_total_point.setText("Your total points : %sP"%format("%d"%(self.m_added_point+10260), ','))
         QApplication.processEvents()
 
     def reset(self, pos=None):
