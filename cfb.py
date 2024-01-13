@@ -8,20 +8,33 @@ import json
 from pn532pi import Pn532
 from pn532pi import Pn532I2c
 from pn532pi import Pn532Spi
+from module_coffeebox_door import CoffeeboxDoor
 from module_door import Door
 from module_weight import MeasureModule
 import RPi.GPIO as GPIO
 
 from main import Ui_StackedWidget
 import asyncio
+
+
+__DEBUG__ = True
+
+
+
+
 # PN532_SPI = Pn532Spi(Pn532Spi.SS0_GPIO8)
 # nfc = Pn532(PN532_SPI)
 # PN532_HSU = Pn532Hsu(Pn532Hsu.RPI_MINI_UART)
 # nfc = Pn532(PN532_HSU)
+
+if __DEBUG__:
+    print("[DEBUG MODE]")
+
 PN532_I2C = Pn532I2c(1)
 nfc = Pn532(PN532_I2C)
 g_user_id = ""
 
+COFFEEBOX_DOOR = CoffeeboxDoor()
 DOOR = Door()
 MEASURE_MODULE = MeasureModule()
 
@@ -167,8 +180,9 @@ class Cfb(QWidget):
     m_weight = None
     def __init__(self):
         super().__init__()
-        self.setupHardware()
-        self.initEventHandler()
+        if not __DEBUG__:
+            self.setupHardware()
+            self.initEventHandler()
         self.evt = Evt()
         self.stackedWidget = QtWidgets.QStackedWidget()
         self.ui = Ui_StackedWidget()
@@ -185,6 +199,7 @@ class Cfb(QWidget):
         #               NFC 초기화                        #
         #------------------------------------------------#
         nfc.begin()
+        time.sleep(0.5)
 
         versiondata = nfc.getFirmwareVersion()
         if not versiondata:
@@ -213,17 +228,24 @@ class Cfb(QWidget):
     # STEP 1: 화면 터치 대기
     def onIdle(self, pos):
         self.stackedWidget.setCurrentIndex(IDX_NFC_DETECT)
-        self.onNfcDetecting()
-        # loop = asyncio.get_event_loop()
-        # loop.run_until_complete(self.onNfcDetecting())
+        #self.onNfcDetecting()
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.onNfcDetecting())
 
 
     # STEP 2: NFC 대기 (30초)
     async def onNfcDetecting(self):
 
+        # 테스트환경에선 nfc detecting 스킵
+        if __DEBUG__:
+            self.evt.nfcDetected.emit()
+            self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
+            return
+
         totalMs = 0
         while(totalMs < 10000):
             success = nfc.inListPassiveTarget()
+            time.sleep(0.5)
             if (success):
                 print("Found something!")
                 selectApdu = bytearray([0x00,                                     # CLA
@@ -236,28 +258,33 @@ class Cfb(QWidget):
                                         ])
 
                 success, response = nfc.inDataExchange(selectApdu)
+                # nfc 발견하면 문 오픈
                 if (success):
                     self.evt.nfcDetected.emit()
                     self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
             else:
                 print("Waiting...")
+
+            # gui 프리징 방지
             QApplication.processEvents()
 
-            await asyncio.sleep(1)
+            await asyncio.sleep(0.5)
             totalMs += 1000
         if(totalMs >= 10000):
             #처음으로
-            #self.something_wrong()
-            self.evt.nfcDetected.emit()
-            self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
+            self.something_wrong()
+            #self.evt.nfcDetected.emit()
+            #self.stackedWidget.setCurrentIndex(IDX_DOOR_OPEN)
 
     def onPutCoffeeWaiting(self):
-        result, weight = self.determine_weight()
+        self.close_door()
+        self.determine_weight()
+        self.save_coffee()
 
-        close_door()
 
     def open_door(self):
-        if DOOR.open():
+
+        if __DEBUG__ or DOOR.open():
             print("┌────────────────────────────────────┐")
             print("│            DOOR OPENED!            │")
             print("└────────────────────────────────────┘")
@@ -267,7 +294,7 @@ class Cfb(QWidget):
 
         return True
     def close_door(self):
-        if DOOR.close():
+        if __DEBUG__ or DOOR.close():
             print("┌────────────────────────────────────┐")
             print("│            DOOR CLOSED!            │")
             print("└────────────────────────────────────┘")
@@ -279,14 +306,30 @@ class Cfb(QWidget):
         print("┌────────────────────────────────────┐")
         print("│       Determining weight...        │")
         print("└────────────────────────────────────┘")
-        self.m_weight = MEASURE_MODULE.measure()
+
+
+        if __DEBUG__ :
+            self.m_weight = 99
+        else :
+            self.m_weight = MEASURE_MODULE.measure()
 
         print('''┌────────────────────────────────────┐''')
         print('''│          Weight : %4dg            │'''%self.m_weight)
         print('''└────────────────────────────────────┘''')
 
-        self.stackedWidget.setCurrentIndex(IDX_RESULT)
         return True, self.m_weight
+    def save_coffee(self):
+        if __DEBUG__ or COFFEEBOX_DOOR.open():
+            print("┌────────────────────────────────────┐")
+            print("│             BOX OPENED!            │")
+            print("└────────────────────────────────────┘")
+        if __DEBUG__ or COFFEEBOX_DOOR.close():
+            print("┌────────────────────────────────────┐")
+            print("│            DOOR CLOSED!            │")
+            print("└────────────────────────────────────┘")
+            self.stackedWidget.setCurrentIndex(IDX_RESULT)
+        return True
+
 
     def something_wrong(self):
         print("!Something wrong...!")
