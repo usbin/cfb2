@@ -344,7 +344,7 @@ class Cfb(QWidget):
         print('''│         Your id: %-10s        │'''%self.m_user_id)
         print('''│         Your point: +%-5d         │'''%point)
         print('''└────────────────────────────────────┘''')
-        reset()
+        #reset()
 
     def reset(self):
         self.close_door()

@@ -25,12 +25,14 @@ class CoffeeboxDoor:
 
     def open(self):
         if(self.m_current_pos == self.m_duration_total):
+            print("[COFFEE BOX] Already opened!")
             return False
         return self.move(self.m_duration_total-self.m_current_pos)
 
 
     def close(self):
         if(self.m_current_pos == 0):
+            print("[COFFEE BOX] Already closed!")
             return False
         return self.move(-self.m_current_pos)
 
