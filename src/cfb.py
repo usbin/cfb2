@@ -384,9 +384,9 @@ class Cfb(QWidget):
         print('''│         Your id: %-10s        │'''%self.m_user_id)
         print('''│         Your point: +%-5d         │'''%self.m_added_point)
         print('''└────────────────────────────────────┘''')
-        self.ui.tb_weight_measure.setText("Weight: %.1fg"%self.m_weight)
-        self.ui.tb_point.setText("%d Points added."%self.m_added_point)
-        self.ui.tb_total_point.setText("Your total points : %sP"%format(math.floor( self.m_added_point+10260), ','))
+        self.ui.tb_weight.setText("무게 : %.1fg"%self.m_weight)
+        self.ui.tb_add_point.setText("%d 포인트의 탄소포인트가 적립되었습니다."%self.m_added_point)
+        self.ui.tb_total_point.setText("총 적립 포인트 : %sP"%format(math.floor( self.m_added_point+10260), ','))
         QApplication.processEvents()
 
     def reset(self, pos=None):
