@@ -16,6 +16,9 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
+  <property name="currentIndex">
+   <number>1</number>
+  </property>
   <widget class="QWidget" name="page1_idle">
    <widget class="QWidget" name="page1_layout" native="true">
     <property name="geometry">
@@ -29,17 +32,64 @@
     <property name="styleSheet">
      <string notr="true"/>
     </property>
-    <widget class="QWidget" name="horizontalWidget" native="true">
+    <widget class="QFrame" name="frame_3">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>310</y>
-       <width>664</width>
-       <height>34</height>
+       <x>-210</x>
+       <y>360</y>
+       <width>671</width>
+       <height>391</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: transparent</string>
+      <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
+border-color: transparent;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame_4">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>70</y>
+       <width>731</width>
+       <height>461</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
+background-color:transparent;
+border-color: transparent;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QWidget" name="horizontalWidget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>280</y>
+       <width>680</width>
+       <height>50</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
@@ -57,6 +107,9 @@
       </item>
       <item>
        <widget class="QLabel" name="label">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="font">
          <font>
           <family>KoPub돋움체 Bold</family>
@@ -67,7 +120,16 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">font: 22pt &quot;KoPub돋움체 Bold&quot;;</string>
+         <string notr="true">font: 22pt &quot;KoPub돋움체 Bold&quot;;
+background-color: transparent;
+border-color: rgb(255, 255, 255);
+border-top-color: rgb(255, 255, 255);
+border-right-color: rgb(255, 255, 255);
+selection-color: rgb(255, 255, 255);
+selection-background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
         </property>
         <property name="text">
          <string>커피박 회수</string>
@@ -102,11 +164,26 @@
           <weight>50</weight>
           <italic>false</italic>
           <bold>false</bold>
+          <kerning>true</kerning>
          </font>
+        </property>
+        <property name="statusTip">
+         <string notr="true"/>
+        </property>
+        <property name="whatsThis">
+         <string notr="true"/>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: transparent;
+alternate-background-color: transparent;
+selection-background-color: transparent;
 font: 22pt &quot;KoPub돋움체 Bold&quot;;</string>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
         </property>
         <property name="text">
          <string>화면을 터치해주세요.</string>
@@ -128,49 +205,6 @@ font: 22pt &quot;KoPub돋움체 Bold&quot;;</string>
       </item>
      </layout>
     </widget>
-    <widget class="QFrame" name="frame_3">
-     <property name="geometry">
-      <rect>
-       <x>-210</x>
-       <y>360</y>
-       <width>671</width>
-       <height>391</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
-border-color: transparent;</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-    </widget>
-    <widget class="QFrame" name="frame_4">
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>80</y>
-       <width>731</width>
-       <height>461</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
-border-color: transparent;</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-    </widget>
-    <zorder>frame_4</zorder>
-    <zorder>frame_3</zorder>
-    <zorder>horizontalWidget</zorder>
    </widget>
   </widget>
   <widget class="QWidget" name="page2_nfc">
@@ -187,7 +221,8 @@ border-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);</string>
+     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
+background-color: transparent;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -206,7 +241,8 @@ border-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);</string>
+     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
+background-color: transparent;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -215,14 +251,17 @@ border-color: transparent;</string>
      <enum>QFrame::Raised</enum>
     </property>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QWidget" name="horizontalWidget" native="true">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>300</y>
+      <x>260</x>
+      <y>260</y>
       <width>512</width>
-      <height>34</height>
+      <height>100</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;</string>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
@@ -258,6 +297,9 @@ border-color: transparent;</string>
          <family>KoPub돋움체 Bold</family>
          <pointsize>22</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: transparent;</string>
        </property>
        <property name="text">
         <string>NFC를 태그</string>
@@ -295,6 +337,7 @@ border-color: transparent;</string>
    <zorder>frame_5</zorder>
    <zorder>frame_6</zorder>
    <zorder>verticalLayoutWidget_2</zorder>
+   <zorder>horizontalWidget</zorder>
   </widget>
   <widget class="QWidget" name="page3_push_coffee">
    <widget class="QFrame" name="frame_7">
@@ -307,7 +350,8 @@ border-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);</string>
+     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
+background-color:transparent;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -326,7 +370,8 @@ border-color: transparent;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);</string>
+     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
+background-color: transparent;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -335,7 +380,7 @@ border-color: transparent;</string>
      <enum>QFrame::Raised</enum>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="" native="true">
     <property name="geometry">
      <rect>
       <x>350</x>
@@ -349,7 +394,7 @@ border-color: transparent;</string>
       <number>0</number>
      </property>
      <property name="bottomMargin">
-      <number>0</number>
+      <number>1</number>
      </property>
      <item>
       <widget class="QPushButton" name="pushButton">
@@ -397,31 +442,6 @@ background-color: rgb(255, 255, 255);</string>
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>317</x>
-      <y>170</y>
-      <width>408</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>KoPub돋움체 Bold</family>
-      <pointsize>22</pointsize>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: transparent</string>
-    </property>
-    <property name="text">
-     <string>문이 열리면 커피박을 투입해주세요.</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
@@ -447,9 +467,36 @@ background-color: rgb(255, 255, 255);</string>
      <number>0</number>
     </property>
    </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>317</x>
+      <y>170</y>
+      <width>408</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>KoPub돋움체 Bold</family>
+      <pointsize>22</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent</string>
+    </property>
+    <property name="text">
+     <string>문이 열리면 커피박을 투입해주세요.</string>
+    </property>
+   </widget>
    <zorder>frame_7</zorder>
    <zorder>frame_8</zorder>
    <zorder>verticalLayoutWidget_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_3</zorder>
   </widget>
   <widget class="QWidget" name="page4_door_closing">
    <widget class="QFrame" name="frame_10">
@@ -462,7 +509,8 @@ background-color: rgb(255, 255, 255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);</string>
+     <string notr="true">image: url(:/rc/커피박 디스플레이-요소분리-01.png);
+background-color: transparent;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -518,6 +566,7 @@ background-color: rgb(255, 255, 255);</string>
    </widget>
    <zorder>frame_10</zorder>
    <zorder>verticalLayoutWidget_4</zorder>
+   <zorder>label_5</zorder>
   </widget>
   <widget class="QWidget" name="page5_measuring">
    <widget class="QWidget" name="verticalLayoutWidget_5">
