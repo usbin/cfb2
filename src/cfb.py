@@ -197,7 +197,7 @@ class Cfb(QWidget):
         self.ui.page1_layout.mousePressEvent = self.onTouch
         self.evt.nfcDetected.connect(self.open_door)
         self.evt.doorOpened.connect(self.ui_door_opened)
-        self.ui.pushButton.clicked.connect(self.ui_on_done_clicked)
+        self.ui.pushButton.mousePressEvent = self.ui_on_done_clicked
         self.evt.doorClosed.connect(self.determine_weight)
         self.evt.weightMeasured.connect(self.save_coffee)
         self.ui.page6_result.mousePressEvent = self.reset
@@ -311,7 +311,7 @@ class Cfb(QWidget):
 
 
     # done 버튼 클릭됨 -> 3초 카운트다운
-    def ui_on_done_clicked(self):
+    def ui_on_done_clicked(self, pos=None):
         self.stackedWidget.setCurrentIndex(IDX_DOOR_CLOSE_WARNING)
         self.ui.label_5.setText("3")
         QApplication.processEvents()
