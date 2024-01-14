@@ -389,6 +389,8 @@ class Cfb(QWidget):
         self.ui.tb_add_point.setText("%d"%self.m_added_point)
         self.ui.tb_total_point.setText("%sP"%format(math.floor( self.m_added_point+10260), ','))
         QApplication.processEvents()
+        time.sleep(10)
+        self.reset()
 
     def reset(self, pos=None):
         self.m_user_id = ""
