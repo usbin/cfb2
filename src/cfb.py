@@ -252,7 +252,7 @@ class Cfb(QWidget):
             success = nfc.inListPassiveTarget()
             # gui 프리징 방지
             QApplication.processEvents()
-            time.sleep(0.3)
+            time.sleep(0.1)
             if (success):
                 print("Found something!")
                 selectApdu = bytearray([0x00,                                     # CLA
@@ -275,7 +275,7 @@ class Cfb(QWidget):
                 print("Waiting...")
 
 
-            await asyncio.sleep(0.3)
+            await asyncio.sleep(0.1)
             totalMs += 1000
         if(totalMs >= 10000):
             #처음으로
