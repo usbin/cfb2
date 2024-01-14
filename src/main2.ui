@@ -142,7 +142,7 @@ font: 22pt &quot;KoPub돋움체 Bold&quot;;</string>
 border-color: transparent;</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
@@ -162,7 +162,7 @@ border-color: transparent;</string>
 border-color: transparent;</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
