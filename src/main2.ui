@@ -147,9 +147,6 @@ border-color: transparent;</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <property name="lineWidth">
-      <number>0</number>
-     </property>
     </widget>
     <widget class="QFrame" name="frame_4">
      <property name="geometry">
@@ -169,9 +166,6 @@ border-color: transparent;</string>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
-     </property>
-     <property name="lineWidth">
-      <number>0</number>
      </property>
     </widget>
     <zorder>frame_4</zorder>
