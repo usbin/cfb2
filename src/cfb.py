@@ -197,6 +197,7 @@ class Cfb(QWidget):
         self.ui.page1_layout.mousePressEvent = self.onTouch
         self.evt.nfcDetected.connect(self.open_door)
         self.evt.doorOpened.connect(self.ui_door_opened)
+        self.ui.page3_push_coffee.mousePressEvent = self.ui_on_done_clicked
         self.ui.pushButton.mousePressEvent = self.ui_on_done_clicked
         self.evt.doorClosed.connect(self.determine_weight)
         self.evt.weightMeasured.connect(self.save_coffee)
