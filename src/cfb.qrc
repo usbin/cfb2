@@ -1,5 +1,22 @@
 <RCC>
   <qresource prefix="rc">
+    <file>KoPubWorld Dotum Bold.ttf</file>
+    <file>KoPubWorld Dotum Light.ttf</file>
+    <file>KoPubWorld Dotum Medium.ttf</file>
+    <file>디스플레이 디자인.ai</file>
+    <file>커피박 디스플레이-요소분리.ai</file>
+    <file>커피박 디스플레이-요소분리-01.png</file>
+    <file>커피박 디스플레이-요소분리-02.png</file>
+    <file>커피박 디스플레이-요소분리-03.png</file>
+    <file>커피박 디스플레이-요소분리-04.png</file>
+    <file>커피박 디스플레이-요소분리-05.png</file>
+    <file>커피박 디스플레이-요소분리-06.png</file>
+    <file>커피박 디스플레이-요소분리-07.png</file>
+    <file>커피박 디스플레이-요소분리-08.png</file>
+    <file>커피박 디스플레이-요소분리-09.png</file>
+    <file>커피박 디스플레이-요소분리-10.png</file>
+    <file>커피박 디스플레이-요소분리-11.png</file>
+    <file>커피박 디스플레이-요소분리-12.png</file>
     <file>bg.gif</file>
   </qresource>
 </RCC>

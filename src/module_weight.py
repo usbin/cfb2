@@ -20,4 +20,4 @@ class MeasureModule:
 
     def measure(self):
         w = self.hx711.get_weight_mean()
-        return -w/130
+        return -w/100
