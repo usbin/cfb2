@@ -192,6 +192,7 @@ class Cfb(QWidget):
         self.center()
         if not __DEBUG__:
             self.setupHardware()
+        self.stackedWidget.setCurrentIndex(IDX_IDLE)
 
         self.ui.page1_layout.mousePressEvent = self.onTouch
         self.evt.nfcDetected.connect(self.open_door)
